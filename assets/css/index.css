@@ -5,44 +5,45 @@
     box-sizing: border-box;
 }
 
-/*General styles*/
 body {
     background-color: rgba(43, 2, 42, 0.941);
 }
 
-main {
-    background-color: #e5daec;
-    box-sizing: border-box;
-    width: 85%;
-    height: 450px;
-    margin: auto;
-}
-
-.game-canvas{
-    display: block;
-    padding-top: 10px;
-}
-
 h1 {
     color: #e5daec;
-    padding-top: 25px;
     width: 100%;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
 }
 
-.btn {
-    height: 200px;
-    width: 200px;
-    display: flexbox;
-    margin-top: 10px;
+.gaming-container {
+    background-color: #e5daec;
+    box-sizing: border-box;
+    width: 85%;
+    height: 100%;
+    margin: auto;
+    margin-bottom: 100px;
 }
 
-@media (max-width: 500px) {
-    .btn {
-        height: 100px;
-        width: 100px;
-    }
+.controls-canvas {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    perspective: 1000px;
+}
+.btn {
+    height: 100px;
+    width: 100px;
+    background-color: rgba(158, 98, 157, 0.941);
+    color: white;
+}
 
+.btn:hover {
+    background-color: rgba(207, 171, 207, 0.941);
+    color: black;
+}
+
+.card-back {
+    transform: rotate(180deg);
 }
