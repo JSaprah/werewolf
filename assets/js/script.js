@@ -1,39 +1,61 @@
 //Variables
-let cardsClick = document.getElementsByTagName("input");
-let cardsMultiply = document.getElementsByClassName("inner-flip")
+//Get all input properties
+const cardsClicks = document.getElementsByTagName("input");
+//Get the front, back civilian and thief card
+const frontCard = document.getElementsByClassName("front-face");
+const backCard = document.getElementsByClassName("back-face");
+const civilian = document.getElementsByClassName("civilian-front");
+const thief = document.getElementById("thief-front");
+//Get the score
+const score = document.getElementById("score-canvas");
 
 //Event listeners
 document.addEventListener("DomContentLoaded", function() {
-
-    for (let card of cardsClick) {
-        card.addEventListener("click", function() {
-           if(this.className = "back-face") {
-            alert("this is the back")
-           }
-           else {
-            alert("front-face")
-           }  
-        })
-    }
+    cardsClicks.addEventListener("click", function(){
+        checkResponse();
+    })
+    runGame();
 })
 
+//Run game
+function runGame(){
 
-/**Hide the thief card randomly*/
-function hideCard(){
-
+    shuffleCard();
+    checkResponse();
+    addScore();
 }
 
-/**Reveal the card on click*/
-function showCard(){
-card.classList.toggle("flipCard");
+/**Gets all cards and shuffles it in a random order*/
+function shuffleCard(){
+
+    let getCards = frontCard.length;
+
+   for (i = 0; i < getCards; i++){
+
+    let random = Math.floor(Math.random() * (getCards));
+    let temporary = getCards[i];
+    getCards[i] = getCards[random]; 
+    getCards[random] = temporary; 
+
+   }
 }
 
 /**Check response */
 function checkResponse(){
+
+    let flipCard = false;
+    let backCard = true;
+
+    if(cardsClicks = true){
+
+        let flipCard = true;
+        let backCard = false;
+    }
 
 }
 
 /**Add score */
 function addScore(){
 
+    let maxTurns = score;
 }
