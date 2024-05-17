@@ -12,7 +12,7 @@ const maxTurns = parseInt(document.getElementById("score-canvas").innerText);
 //Event listeners
 document.addEventListener("DomContentLoaded", function() {
     cardsClicks.addEventListener("click", function(){
-        checkResponse();
+        
     })
     runGame();
 })
@@ -30,7 +30,7 @@ function shuffleCard(){
 
     let getCards = frontCard.length;
 
-   for (i = 0; i < getCards; i++){
+   for (i = 0; i < getCards; i++) {
 
     let random = Math.floor(Math.random() * (getCards));
     let temporary = getCards[i];
@@ -48,14 +48,12 @@ function checkResponse(){
 
     if(cardsClicks = true){
 
-        let flipCard = true;
-        let backCard = false;
     }
 
 }
 
-/**Add score */
-function addScore(){
+/**minus turn */
+function minusTurn(){
 
-    let maxTurns = score;
 }
+
