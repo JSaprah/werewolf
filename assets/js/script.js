@@ -1,8 +1,22 @@
 //Variables
-const card = document.getElementsByClassName("inner-flip");
+let cardsClick = document.getElementsByTagName("input");
+let cardsMultiply = document.getElementsByClassName("inner-flip")
 
 //Event listeners
-card.addEventListener("click", showCard);
+document.addEventListener("DomContentLoaded", function() {
+
+    for (let card of cardsClick) {
+        card.addEventListener("click", function() {
+           if(this.className = "back-face") {
+            alert("this is the back")
+           }
+           else {
+            alert("front-face")
+           }  
+        })
+    }
+})
+
 
 /**Hide the thief card randomly*/
 function hideCard(){

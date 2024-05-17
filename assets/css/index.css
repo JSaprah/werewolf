@@ -34,17 +34,17 @@ h1 {
 
 /** Flipping **/
 
-/* This container is needed to position the front and back side */
 .inner-flip {
     width: 100px;
     height: 100px;
     position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    margin: 20px;
 }
 
 /*Delete this code add JavaScript onclick*/
-.controls-canvas:hover .inner-flip {
+.controls-canvas .inner-flip:hover {
     transform: rotateY(180deg);
 }
 
