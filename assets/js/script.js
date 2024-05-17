@@ -1,13 +1,13 @@
 //Variables
 //Get all input properties
 const cardsClicks = document.getElementsByTagName("input");
-//Get the front, back civilian and thief card
+//Get the front, back civilian and werewolf card
 const frontCard = document.getElementsByClassName("front-face");
 const backCard = document.getElementsByClassName("back-face");
 const civilian = document.getElementsByClassName("civilian-front");
-const thief = document.getElementById("thief-front");
+const werewolf = document.getElementById("werewolf-front");
 //Get the score
-const score = document.getElementById("score-canvas");
+const maxTurns = parseInt(document.getElementById("score-canvas").innerText);
 
 //Event listeners
 document.addEventListener("DomContentLoaded", function() {
