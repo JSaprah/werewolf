@@ -6,17 +6,26 @@ const cardPlace = document.getElementsByClassName("inner-flip")
 const frontCard = document.getElementsByClassName("front-face");
 const backCard = document.getElementsByClassName("back-face");
 const civilian = document.getElementsByClassName("civilian-front");
-//Get the score
-const maxTurns = parseInt(document.getElementById("score-canvas").innerText);
+//Get the turns left
+const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
+    let buttonClicks = 0;
+    let remainingTurns = maxTurns;
+
     for (let input of inputs) {
         input.addEventListener("click", function () {
             console.log(input);
-            console.log("click");
-            return (input);
+            buttonClicks++;
+            console.log(buttonClicks);
+            document.getElementById("turnsLeft").innerText = remainingTurns - buttonClicks;
+
+            if(buttonClicks > remainingTurns -1){
+                console.log("The end");
+            }
+            
         })
     }
     runGame();
@@ -27,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function runGame() {
 
     checkResponse();
-    minusTurn();
+   
 }
 
 /**Gets all cards and place the wolf in a random place*/
@@ -55,10 +64,19 @@ function checkResponse(input) {
 
 }
 
-/**minus turn */
-function minusTurn(input) {
+/**minus turn 
+function minusTurn() {
 
+    let buttonClicks = 0;
     let remainingTurns = maxTurns;
+
+
+    if(buttonClicks > remainingTurns){
+        console.log("The end");
+    }
+
     console.log(`Remaining turns = ${maxTurns}`);
-}
+}*/
+
+
 
