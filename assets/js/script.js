@@ -1,6 +1,7 @@
 //Variables
 //Get all input properties
 const cardsClicks = document.getElementsByTagName("input");
+const cardPlace = document.getElementsByClassName("inner-flip")
 //Get the front, back civilian and werewolf card
 const frontCard = document.getElementsByClassName("front-face");
 const backCard = document.getElementsByClassName("back-face");
@@ -25,7 +26,8 @@ function runGame() {
     addScore();
 }
 
-/**Gets all cards and shuffles it in a random order*/
+/**Gets all cards and places the wolf in a random place*/
+
 function shuffleCard() {
 
     let getCards = frontCard.length;
@@ -35,7 +37,11 @@ function shuffleCard() {
         randomValues.add(Math.floor(Math.random() * getCards));
     }
 
-    console.log(randomValues);
+    let myArray = Array.from(randomValues);
+    console.log(myArray)
+    let index = myArray.indexOf(1);
+    console.log("index of wolf image== ", index);
+
 }
 
 shuffleCard();
