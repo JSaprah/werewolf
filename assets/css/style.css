@@ -8,6 +8,7 @@
 body {
     background-color: rgba(16, 1, 16, 0.941);
    /* background-color: rgba(43, 2, 42, 0.941); */
+   
 }
 
 h1 {
@@ -35,9 +36,9 @@ h1 {
 }
 
 .controls-canvas {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    align-items: center;
 }
 
 /** Flipping **/
@@ -45,10 +46,10 @@ h1 {
 .inner-flip {
     width: 100px;
     height: 100px;
-    position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    margin: 20px;
+    margin: 10px;
+    margin-top: 20px;
 }
 
 /*Delete this code add JavaScript onclick*/
@@ -86,3 +87,50 @@ h1 {
     text-align: center;
     margin: 20px;
 }
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(164, 162, 162, 0.5);
+    backdrop-filter: bur(3px);
+    z-index: 1;
+}
+
+.modal {
+    z-index: 2;
+}
+
+.hidden {
+    display: none;
+}
+
+/*Media queries*/
+
+@media screen and (max-width: 767px) {
+
+.controls-canvas {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+}
+}
+
+/*Media queries*/
+
+@media screen and (max-width: 560px) {
+
+    .controls-canvas {
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+    }
+    }
+
+    /*Media queries*/
+
+@media screen and (max-width: 440px) {
+
+    .controls-canvas {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+    }

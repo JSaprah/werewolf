@@ -1,11 +1,11 @@
-//Blobal variables
+//Global variables
 const inputs = document.getElementsByClassName("inner-flip");
 const frontCard = document.getElementsByClassName("front-face");
 const backCard = document.getElementsByClassName("back-face");
 const civilian = document.getElementsByClassName("civilian-front");
 const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
-
+const modal = document.getElementsByClassName("hidden");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
