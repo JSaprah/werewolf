@@ -6,24 +6,10 @@ const civilian = document.getElementsByClassName("civilian-front");
 const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 
+
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
-    let remainingTurns = maxTurns;
-   
-    for (let input of inputs) {
-        console.log('input', input)
-
-        input.addEventListener("click", function () {
-            remainingTurns = minusTurn(remainingTurns);
-            turnCounterRef.innerText = remainingTurns;
-            
-           dataIndex = input.getAttribute('data-');
-           let dataIndexArray = new Array(dataIndex);
-           compareClickToWolfLocation(dataIndexArray);
-
-        })
-    }
     runGame();
 }
 )
@@ -31,7 +17,26 @@ document.addEventListener("DOMContentLoaded", function () {
 //Run game
 function runGame() {
 
-    shuffleCard();
+    let index = shuffleCard();
+    let correctAnswer = correctResponse(index);
+
+    let remainingTurns = maxTurns;
+
+    for (let input of inputs) {
+        console.log('input', input)
+
+        input.addEventListener("click", function () {
+            remainingTurns = minusTurn(remainingTurns);
+            turnCounterRef.innerText = remainingTurns;
+
+            dataIndex = input.getAttribute('data-');
+            let dataIndexArray = new Array(dataIndex);
+
+            //    correctResponse(index);
+            compareClickToWolfLocation(dataIndexArray, correctAnswer);
+
+        })
+    }
 
 }
 
@@ -62,23 +67,36 @@ function shuffleCard() {
     let index = myArray.indexOf(1);
     console.log("index of wolf image== ", index);
 
-    correctResponse(index);
+    // correctResponse(index);
     return index;
 
 }
 
 /**Returns the correct answer */
 function correctResponse(index) {
+
     let correctAnswer = index;
     console.log(`Correct Answer is ${correctAnswer}`);
+
+    // compareClickToWolfLocation(correctAnswer);
 
     return correctAnswer;
 
 }
 
 /**Compares the correct answer with the clicked answer */
-function compareClickToWolfLocation(dataIndexArray) {
+function compareClickToWolfLocation(dataIndexArray, correctAnswer) {
 
     console.log(dataIndexArray);
+    let answerCorrect = correctAnswer;
+    console.log(answerCorrect);
 
-    }
+    if (dataIndexArray == answerCorrect) {
+
+        console.log("Yayy")
+
+    } else
+
+        console.log("nahh")
+
+}
