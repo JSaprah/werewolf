@@ -1,31 +1,27 @@
-//Variables
-//Get all input properties
-const inputs = document.getElementsByTagName("input");
-const cardPlace = document.getElementsByClassName("inner-flip")
-//Get the front, back civilian and werewolf card
+//Blobal variables
+const inputs = document.getElementsByClassName("inner-flip");
 const frontCard = document.getElementsByClassName("front-face");
 const backCard = document.getElementsByClassName("back-face");
 const civilian = document.getElementsByClassName("civilian-front");
-//Get the turns left
 const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
+const turnCounterRef = document.getElementById("turnsLeft");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
-    let buttonClicks = 0;
     let remainingTurns = maxTurns;
-
+   
     for (let input of inputs) {
-        input.addEventListener("click", function () {
-            console.log(input);
-            buttonClicks++;
-            console.log(buttonClicks);
-            document.getElementById("turnsLeft").innerText = remainingTurns - buttonClicks;
+        console.log('input', input)
 
-            if(buttonClicks > remainingTurns -1){
-                console.log("The end");
-            }
+        input.addEventListener("click", function () {
+            remainingTurns = minusTurn(remainingTurns);
+            turnCounterRef.innerText = remainingTurns;
             
+           dataIndex = input.getAttribute('data-');
+           let dataIndexArray = new Array(dataIndex);
+           compareClickToWolfLocation(dataIndexArray);
+
         })
     }
     runGame();
@@ -35,11 +31,23 @@ document.addEventListener("DOMContentLoaded", function () {
 //Run game
 function runGame() {
 
-    checkResponse();
-   
+    shuffleCard();
+
 }
 
-/**Gets all cards and place the wolf in a random place*/
+/**Decrease the count of the turns left. */
+function minusTurn(turnsCount) {
+
+    if (turnsCount > 0) {
+        return turnsCount - 1;
+    } else {
+        console.log("Game over");
+        return 0;
+    }
+
+}
+
+/**Gets all cards and place the wolf in a random index*/
 function shuffleCard() {
 
     let getCards = frontCard.length;
@@ -54,29 +62,23 @@ function shuffleCard() {
     let index = myArray.indexOf(1);
     console.log("index of wolf image== ", index);
 
+    correctResponse(index);
     return index;
+
 }
 
-/**Check response */
-function checkResponse(input) {
-    let correctAnswer = shuffleCard();
+/**Returns the correct answer */
+function correctResponse(index) {
+    let correctAnswer = index;
     console.log(`Correct Answer is ${correctAnswer}`);
 
+    return correctAnswer;
+
 }
 
-/**minus turn 
-function minusTurn() {
+/**Compares the correct answer with the clicked answer */
+function compareClickToWolfLocation(dataIndexArray) {
 
-    let buttonClicks = 0;
-    let remainingTurns = maxTurns;
+    console.log(dataIndexArray);
 
-
-    if(buttonClicks > remainingTurns){
-        console.log("The end");
     }
-
-    console.log(`Remaining turns = ${maxTurns}`);
-}*/
-
-
-
