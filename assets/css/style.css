@@ -8,7 +8,6 @@
 body {
     background-color: rgba(16, 1, 16, 0.941);
    /* background-color: rgba(43, 2, 42, 0.941); */
-   
 }
 
 h1 {
@@ -75,30 +74,31 @@ h1 {
     width: 100px;
 }
 
-#information-modal{
-
+#information-modal {
     background-color: rgba(24, 2, 24, 0.941);
     color: white;
     width: 90%;
     height: 100%;
-    position: relative;
     z-index: 2;
     border-radius: 10px;
     text-align: center;
     margin: 20px;
-}
-
-.overlay {
     position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(164, 162, 162, 0.5);
-    backdrop-filter: bur(3px);
-    z-index: 1;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 200px;
 }
 
-.modal {
-    z-index: 2;
+#start-mission {
+    color: rgba(24, 2, 24);
+    background-color: white;
+    height: 50px;
+    width: 200px;
+}
+
+#start-mission:hover {
+    color: rgb(195, 130, 195);
 }
 
 .hidden {

@@ -5,11 +5,13 @@ const backCard = document.getElementsByClassName("back-face");
 const civilian = document.getElementsByClassName("civilian-front");
 const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
-const modal = document.getElementsByClassName("hidden");
+const modal = document.getElementById("information-modal");
+
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
+    modal.classList.remove("hidden");
     runGame();
 }
 )
@@ -19,7 +21,6 @@ function runGame() {
 
     let index = shuffleCard();
     let correctAnswer = correctResponse(index);
-
     let remainingTurns = maxTurns;
 
     for (let input of inputs) {
