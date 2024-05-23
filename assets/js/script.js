@@ -6,12 +6,15 @@ const civilian = document.getElementsByClassName("civilian-front");
 const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
+const startMission = document.getElementById("start-mission");
 
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
     modal.classList.remove("hidden");
+    startMission.addEventListener("click", closeModal);
+
     runGame();
 }
 )
@@ -33,7 +36,7 @@ function runGame() {
             dataIndex = input.getAttribute('data-');
             let dataIndexArray = new Array(dataIndex);
 
-            //    correctResponse(index);
+            //correctResponse(index);
             compareClickToWolfLocation(dataIndexArray, correctAnswer);
 
         })
@@ -44,10 +47,14 @@ function runGame() {
 /**Decrease the count of the turns left. */
 function minusTurn(turnsCount) {
 
-    if (turnsCount > 0) {
+    if (turnsCount > 1) {
         return turnsCount - 1;
     } else {
         console.log("Game over");
+        
+        modal.classList.remove("hidden");
+        runGame();
+
         return 0;
     }
 
@@ -95,9 +102,23 @@ function compareClickToWolfLocation(dataIndexArray, correctAnswer) {
     if (dataIndexArray == answerCorrect) {
 
         console.log("Yayy")
+        openModal(answerCorrect);
 
     } else
 
         console.log("nahh")
 
+}
+
+function closeModal(){
+    modal.classList.add("hidden");
+}
+
+function openModal(answerCorrect){
+
+    if(answerCorrect){
+
+        modal.classList.remove("hidden");
+        runGame();
+    }
 }
