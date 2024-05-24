@@ -7,7 +7,8 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-//const descriptionIntro = document.getElementsByClassName("description-intro");
+const descriptionIntro = document.getElementsByClassName("description-intro");
+
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function runGame() {
 
     let index = shuffleCard();
-    let correctAnswer = correctResponse(index);
     let remainingTurns = maxTurns;
 
     for (let input of inputs) {
@@ -34,13 +34,12 @@ function runGame() {
 
             remainingTurns = minusTurn(remainingTurns);
             turnCounterRef.innerText = remainingTurns;
-            
 
             dataIndex = input.getAttribute('data-');
             let dataIndexArray = new Array(dataIndex);
 
             //correctResponse(index);
-            compareClickToWolfLocation(dataIndexArray, correctAnswer);
+            compareClickToWolfLocation(dataIndexArray, index);
 
         })
     }
@@ -52,10 +51,10 @@ function minusTurn(turnsCount) {
     if (turnsCount > 1) {
         return turnsCount - 1;
     } else {
+
         console.log("Game over");
         
-        modal.classList.remove("hidden");
-        runGame();
+        openModal("false");
 
         return 0;
     }
@@ -82,21 +81,11 @@ function shuffleCard() {
 
 }
 
-/**Returns the correct answer */
-function correctResponse(index) {
-
-    let correctAnswer = index;
-    console.log(`Correct Answer is ${correctAnswer}`);
-
-    return correctAnswer;
-
-}
-
 /**Compares the correct answer with the clicked answer */
-function compareClickToWolfLocation(dataIndexArray, correctAnswer) {
+function compareClickToWolfLocation(dataIndexArray, index) {
 
     console.log(dataIndexArray);
-    let answerCorrect = correctAnswer;
+    let answerCorrect = index;
     console.log(answerCorrect);
 
     if (dataIndexArray == answerCorrect) {
@@ -116,9 +105,14 @@ function closeModal(){
 
 function openModal(answerCorrect){
 
+
     if(answerCorrect){
 
+        descriptionIntro.innerHTML = `<h2>You win!</h2>`
+       modal.classList.remove("hidden");
+
+    }else {
+
         modal.classList.remove("hidden");
-        runGame();
     }
 }
