@@ -108,11 +108,29 @@ function openModal(answerCorrect){
 
     if(answerCorrect){
 
-        descriptionIntro.innerHTML = `<h2>You win!</h2>`
-       modal.classList.remove("hidden");
+        descriptionIntro.innerHTML = `
+        <div>
+            <h2>You win</h2>
+            <p>Congrats</p>
+            <button onClick="restartGame()">Play again</button>
+        </div>`
 
     }else {
 
-        modal.classList.remove("hidden");
+        descriptionIntro.innerHTML = `
+        <div>
+            <h2>You lose</h2>
+            <p>Try again</p>
+            <button onClick="restartGame()">Play again</button> 
+        </div>`
+
     }
+    
+    modal.classList.remove("hidden");
 }
+
+function restartGame(){
+
+    console.log("restarting it")
+}
+
