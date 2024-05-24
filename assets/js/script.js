@@ -35,8 +35,9 @@ function runGame() {
 
         input.addEventListener("click", function () {
 
-            turnCounterRef.innerText = remainingTurns;
             remainingTurns = minusTurn(remainingTurns);
+            turnCounterRef.innerText = remainingTurns;
+            
 
             dataIndex = input.getAttribute('data-');
             let dataIndexArray = new Array(dataIndex);
