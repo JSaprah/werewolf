@@ -79,7 +79,7 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 |Issue|Solution|
 |-------------|-------------|
 |Issue 28 cards were returning |I added another class on div level to avoid both front back being counted|
-|I added ID for both thief front and back. Realised that ID should be unique. This was causing the issue that the JavaScript was returning null value|Added a different id for front and back|
+|I added same ID for both werewolf front and back. Realised that ID should be unique. This was causing the issue that JavaScript was returning null value|Added a different id for front and back|
 |Random number did not give me back unique values|Using set solved my issue|
 |Cards did not have a unique value because of this I was not able to compare |Added data-index so that the cards can have a unique value|
 |I needed to pass two paramaters for compareClickToWolfLocation. The parameters were coming from different functions, because of this reason I was not able to pass it.|I had functions calling other functions which became really messy. I had to reorganise the structure and put more code in the runGame function. From there I was able to pass two paramaters to compareClickToWolfLocation function.|
