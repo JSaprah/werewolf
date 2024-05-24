@@ -105,7 +105,7 @@ h1 {
     display: none;
 }
 
-.description {
+.description-intro, .description-win, .description-lose {
     display: none;
 }
 

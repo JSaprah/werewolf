@@ -1,39 +1,85 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **The Werewolf**
 
-Welcome,
+## **Site overview**
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This project is inspired by the Werewolf by Stellar Factory. This game was introduced to me on the work floor few months ago. This is a roleplay game and can be played with more or less roles. The main roles (and the basic version) is of the werewolf and the civilians. At night time the werewolf wakes up and kills one civilian. At day time the civilians can mutually guess who they think the werewolf is. If they find the werewolf the civilians win. If not, the werewolf wins. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+For this project I have chosen for the simplified version, because of the fact that this is a roleplay game and it should actually be played together in a room. Next to that I am fulfilling this project based on the given requirements and the time constraints.
 
-## Codeanywhere Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## **Process**
 
-`python3 -m http.server`
+![Process](docs/screenshots/process-werewolf.png)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+## **Requirements**
 
-`http_server`
+* As a user I want a small introduction to the game
+* As a user I want the cards to be in a random order
+* As a user I want to have a maximum number of turns to be six
+* As a user I want the game to end when the turns are over or when I have made the right guess
+* As a user I want the cards to be not visible at first. These should only be visible on click of the card
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## **Wireframing**
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+![Wireframe](docs/screenshots/structure-werewolf.PNG)
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## **Structure and style with html and css**
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+The html and the css part in this project are kept as simple, but functional as possible. 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## **JavaScript structure**
 
----
+### **Variables**
+Constant variables to retrieve classes and id's from html to manipulate the dom and reuse them throughout the script.
 
-Happy coding!
+### **Event listener**
+
+* Event listener on load of the page DOMContentLoaded
+    * The display property in css has been set to none which hides the modal. In this event listener the hide option is removed so the user sees the modal.
+    * It runs the runGame() function.
+
+### **Functions**
+
+* runGame()
+    * Loops through all the cards - div inputs.
+        * Add event listener upon click of the cards.
+        * Retrieves the maximum turns and runs the function minusTurn with the remainingTurns as a parameter.
+        * Gets the data-index value of the cards and puts that in an array
+        * Runs the function compareClickToWolfLocation() with two parameters - data-index and correctAnswer
+
+* shuffleCard()
+    * Assigns the wolf to index 1 
+    * Shuffles the cards in a random order
+    * Returns the index of the wolf
+
+* minusTurn(turnsCount)
+    * Gets the turnsCount as a parameter of the function
+    * Decreases the count of turns left. If the turns left is more than 1
+    * If the turns left is less than 1 it opens the modal for Game over
+
+* correctResponse(index)
+    * Gets the index as a parameter of the function
+    * Returns the correct response
+
+* compareClickToWolfLocation(dataIndexArray, correctAnswer)
+    * Gets the dataIndexArray  and correctAnswer as a parameter of the function
+    * Compares the correct answer with the selected answer/ clicked card by the user
+
+* closeModal()
+    * Hides the modal on click of the button in the modal
+    
+* openModal()
+    * Opens the modal in case if the turns are over or the wolf card is found
+
+## **Issues faced during the project**
+
+
+|Issue|Solution|
+|-------------|-------------|
+|Issue 28 cards were returning |I added another class on div level to avoid both front back being counted|
+|I added ID for both thief front and back. Realised that ID should be unique. This was causing the issue that the JavaScript was returning null value|Added a different id for front and back|
+|Random number did not give me back unique values|Using set solved my issue|
+|Cards did not have a unique value because of this I was not able to compare |Added data-index so that the cards can have a unique value|
+|I needed to pass two paramaters for compareClickToWolfLocation. The parameters were coming from different functions, because of this reason I was not able to pass it.|I had functions calling other functions which became really messy. I had to reorganise the structure and put more code in the runGame function. From there I was able to pass two paramaters to compareClickToWolfLocation function.|

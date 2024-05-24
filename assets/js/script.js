@@ -8,14 +8,15 @@ const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
 const descriptionIntro = document.getElementsByClassName("description-intro");
-const descriptionWin = document.getElementsByClassName("description-win");
-const descriptionLose = document.getElementsByClassName("description-lose");
+//const descriptionWin = document.getElementsByClassName("description-win");
+//const descriptionLose = document.getElementsByClassName("description-lose");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
     modal.classList.remove("hidden");
-    descriptionIntro.classList.remove("hidden");
+    //descriptionIntro.classList.remove("hidden");
+
     startMission.addEventListener("click", closeModal);
 
     runGame();
@@ -33,8 +34,9 @@ function runGame() {
         console.log('input', input)
 
         input.addEventListener("click", function () {
-            remainingTurns = minusTurn(remainingTurns);
+
             turnCounterRef.innerText = remainingTurns;
+            remainingTurns = minusTurn(remainingTurns);
 
             dataIndex = input.getAttribute('data-');
             let dataIndexArray = new Array(dataIndex);
@@ -44,7 +46,6 @@ function runGame() {
 
         })
     }
-
 }
 
 /**Decrease the count of the turns left. */
@@ -88,8 +89,6 @@ function correctResponse(index) {
 
     let correctAnswer = index;
     console.log(`Correct Answer is ${correctAnswer}`);
-
-    // compareClickToWolfLocation(correctAnswer);
 
     return correctAnswer;
 
