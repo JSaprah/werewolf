@@ -105,10 +105,6 @@ h1 {
     display: none;
 }
 
-.description-intro, .description-win, .description-lose {
-    display: none;
-}
-
 /*Media queries*/
 
 @media screen and (max-width: 767px) {

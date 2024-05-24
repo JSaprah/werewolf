@@ -7,15 +7,12 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-const descriptionIntro = document.getElementsByClassName("description-intro");
-//const descriptionWin = document.getElementsByClassName("description-win");
-//const descriptionLose = document.getElementsByClassName("description-lose");
+//const descriptionIntro = document.getElementsByClassName("description-intro");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
 
     modal.classList.remove("hidden");
-    //descriptionIntro.classList.remove("hidden");
 
     startMission.addEventListener("click", closeModal);
 
