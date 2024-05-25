@@ -79,8 +79,8 @@ function shuffleCard() {
 
         if (cardIndexArray == index) {
 
-            const frontFaceInput = card.querySelector('.front-face input[type="image"]');
-            const backFaceInput = card.querySelector('.back-face input[type="image"]');
+            let frontFaceInput = card.querySelector('.front-face input[type="image"]');
+            let backFaceInput = card.querySelector('.back-face input[type="image"]');
 
             console.log("Front face input: ", frontFaceInput);
             console.log("Back face input: ", backFaceInput);
@@ -103,7 +103,7 @@ function compareClickToWolfLocation(dataIndexArray, index) {
     if (dataIndexArray == answerCorrect) {
 
         console.log("Yayy")
-        openModal(answerCorrect);
+        openModal(true);
 
     } else
 
@@ -139,8 +139,7 @@ function openModal(answerCorrect) {
 
 function restartGame() {
 
+    runGame();
 
-
-    console.log("restarting it")
 
 }
