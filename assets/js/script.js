@@ -8,6 +8,7 @@ const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
 const descriptionIntro = document.getElementsByClassName("description-intro");
+const headerTwo = document.getElementById("introduction").innerHTML;
 
 
 //Event listeners
@@ -28,7 +29,7 @@ function runGame() {
     let remainingTurns = maxTurns;
 
     for (let input of inputs) {
-        console.log('input', input)
+      //  console.log('input', input)
 
         input.addEventListener("click", function () {
 
@@ -39,7 +40,7 @@ function runGame() {
             let dataIndexArray = new Array(dataIndex);
 
             //correctResponse(index);
-            compareClickToWolfLocation(dataIndexArray, index);
+            compareClickToWolfLocation(dataIndexArray, index); 
 
         })
     }
@@ -61,22 +62,16 @@ function minusTurn(turnsCount) {
 
 }
 
+
 /**Gets all cards and place the wolf in a random index*/
 function shuffleCard() {
 
     let getCards = frontCard.length;
-    let randomValues = new Set();
+    //console.log("card length=", getCards);
 
-    while (randomValues.size !== getCards) {
-        randomValues.add(Math.floor(Math.random() * getCards));
-    }
+    let index = Math.floor(Math.random()* getCards);
+    console.log("random nr=", index);
 
-    let myArray = Array.from(randomValues);
-    console.log(myArray);
-    let index = myArray.indexOf(1);
-    console.log("index of wolf image== ", index);
-
-    // correctResponse(index);
     return index;
 
 }
@@ -115,7 +110,7 @@ function openModal(answerCorrect){
             <button onClick="restartGame()">Play again</button>
         </div>`
 
-    }else {
+    } else {
 
         descriptionIntro.innerHTML = `
         <div>
