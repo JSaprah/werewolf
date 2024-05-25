@@ -7,8 +7,10 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-const descriptionIntro = document.getElementsByClassName("description-intro");
-const headerTwo = document.getElementById("introduction").innerHTML;
+//Change modal text
+const headerTwo = document.getElementById("headerTwo");
+const paragraph = document.getElementById("paragraph");
+const startButton = document.getElementById("start-mission");
 
 
 //Event listeners
@@ -29,7 +31,7 @@ function runGame() {
     let remainingTurns = maxTurns;
 
     for (let input of inputs) {
-      //  console.log('input', input)
+        //  console.log('input', input)
 
         input.addEventListener("click", function () {
 
@@ -39,9 +41,7 @@ function runGame() {
             dataIndex = input.getAttribute('data-');
             let dataIndexArray = new Array(dataIndex);
 
-            //correctResponse(index);
-            compareClickToWolfLocation(dataIndexArray, index); 
-
+            compareClickToWolfLocation(dataIndexArray, index);
         })
     }
 }
@@ -53,27 +53,44 @@ function minusTurn(turnsCount) {
         return turnsCount - 1;
     } else {
 
-        console.log("Game over");
-        
-        openModal("false");
+        //    console.log("Game over");
+
+        openModal(false);
 
         return 0;
     }
 
 }
 
-
 /**Gets all cards and place the wolf in a random index*/
 function shuffleCard() {
 
+    //generating the random number
     let getCards = frontCard.length;
-    //console.log("card length=", getCards);
 
-    let index = Math.floor(Math.random()* getCards);
+    let index = Math.floor(Math.random() * getCards);
     console.log("random nr=", index);
 
-    return index;
+    //retrieving the input cards
+    for (let card of inputs) {
 
+        cardIndex = card.getAttribute('data-');
+        let cardIndexArray = cardIndex;
+
+        if (cardIndexArray == index) {
+
+            const frontFaceInput = card.querySelector('.front-face input[type="image"]');
+            const backFaceInput = card.querySelector('.back-face input[type="image"]');
+
+            console.log("Front face input: ", frontFaceInput);
+            console.log("Back face input: ", backFaceInput);
+
+        }
+
+        console.log("this is card index= ", cardIndexArray);
+
+    }
+    return index;
 }
 
 /**Compares the correct answer with the clicked answer */
@@ -94,38 +111,36 @@ function compareClickToWolfLocation(dataIndexArray, index) {
 
 }
 
-function closeModal(){
+function closeModal() {
     modal.classList.add("hidden");
 }
 
-function openModal(answerCorrect){
+function openModal(answerCorrect) {
 
+    if (answerCorrect) {
 
-    if(answerCorrect){
+        headerTwo.innerHTML = `You win!`;
+        paragraph.innerHTML = `Congratulations!`;
+        startButton.innerHTML = `Play again`;
 
-        descriptionIntro.innerHTML = `
-        <div>
-            <h2>You win</h2>
-            <p>Congrats</p>
-            <button onClick="restartGame()">Play again</button>
-        </div>`
+        restartGame();
 
     } else {
 
-        descriptionIntro.innerHTML = `
-        <div>
-            <h2>You lose</h2>
-            <p>Try again</p>
-            <button onClick="restartGame()">Play again</button> 
-        </div>`
+        headerTwo.innerHTML = `You Lose!`;
+        paragraph.innerHTML = `Try again`;
+        startButton.innerHTML = `Play again`;
+
+        restartGame();
 
     }
-    
     modal.classList.remove("hidden");
 }
 
-function restartGame(){
+function restartGame() {
+
+
 
     console.log("restarting it")
-}
 
+}
