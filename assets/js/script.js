@@ -7,11 +7,12 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
+//const imageSource = image.getAttribute("src");
+
 //Change modal text
 const headerTwo = document.getElementById("headerTwo");
 const paragraph = document.getElementById("paragraph");
 const startButton = document.getElementById("start-mission");
-
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", function () {
@@ -82,6 +83,8 @@ function shuffleCard() {
             let frontFaceInput = card.querySelector('.front-face input[type="image"]');
             let backFaceInput = card.querySelector('.back-face input[type="image"]');
 
+            backFaceInput.src = "assets/images/werewolf-front.png";
+
             console.log("Front face input: ", frontFaceInput);
             console.log("Back face input: ", backFaceInput);
 
@@ -104,11 +107,7 @@ function compareClickToWolfLocation(dataIndexArray, index) {
 
         console.log("Yayy")
         openModal(true);
-
-    } else
-
-        console.log("nahh")
-
+}
 }
 
 function closeModal() {
@@ -139,7 +138,8 @@ function openModal(answerCorrect) {
 
 function restartGame() {
 
-    runGame();
-
+// set remainingTurns back to 6
+// New random number
+// Picture back to civilian
 
 }
