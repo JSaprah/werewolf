@@ -7,7 +7,6 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-//const imageSource = image.getAttribute("src");
 
 //Change modal text
 const headerTwo = document.getElementById("headerTwo");
@@ -28,11 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
 //Run game
 function runGame() {
 
-    let index = shuffleCard();
+    let index = generateRandomNumber();
     let remainingTurns = maxTurns;
 
     for (let input of inputs) {
-        //  console.log('input', input)
 
         input.addEventListener("click", function () {
 
@@ -47,14 +45,12 @@ function runGame() {
     }
 }
 
-/**Decrease the count of the turns left. */
+/**Decrease the count of the turns left with each user click. */
 function minusTurn(turnsCount) {
 
     if (turnsCount > 1) {
         return turnsCount - 1;
     } else {
-
-        //    console.log("Game over");
 
         openModal(false);
 
@@ -63,14 +59,20 @@ function minusTurn(turnsCount) {
 
 }
 
-/**Gets all cards and place the wolf in a random index*/
-function shuffleCard() {
+/**Generate a random number and return the index. This is equal to the correct answer*/
+function generateRandomNumber() {
 
-    //generating the random number
     let getCards = frontCard.length;
 
     let index = Math.floor(Math.random() * getCards);
     console.log("random nr=", index);
+    addWolfImage(index);
+
+    return index;
+}
+
+/**Add the wolf image in the correct index number*/
+function addWolfImage(index){
 
     //retrieving the input cards
     for (let card of inputs) {
@@ -93,10 +95,9 @@ function shuffleCard() {
         console.log("this is card index= ", cardIndexArray);
 
     }
-    return index;
 }
 
-/**Compares the correct answer with the clicked answer */
+/**Compare the correct answer with the clicked answer */
 function compareClickToWolfLocation(dataIndexArray, index) {
 
     console.log(dataIndexArray);
@@ -110,10 +111,12 @@ function compareClickToWolfLocation(dataIndexArray, index) {
 }
 }
 
+/**Hide the modal */
 function closeModal() {
     modal.classList.add("hidden");
 }
 
+/**Make the modal visible */
 function openModal(answerCorrect) {
 
     if (answerCorrect) {
@@ -141,5 +144,6 @@ function restartGame() {
 // set remainingTurns back to 6
 // New random number
 // Picture back to civilian
+// Delay time to show modal
 
 }
