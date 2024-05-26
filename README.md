@@ -49,10 +49,13 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
         * Gets the data-index value of the cards and puts that in an array
         * Runs the function compareClickToWolfLocation() with two parameters - data-index and correctAnswer
 
-* shuffleCard()
-    * Assigns the wolf to index 1 
-    * Shuffles the cards in a random order
+* GenerateRandomNumber()
+    * Generate a random number
+    * Assigns the wolf to index 1
     * Returns the index of the wolf
+
+* addWolfImage ()
+    * Add wolf image to index 1
 
 * minusTurn(turnsCount)
     * Gets the turnsCount as a parameter of the function
