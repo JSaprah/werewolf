@@ -37,7 +37,7 @@ function runGame() {
             remainingTurns = minusTurn(remainingTurns);
             turnCounterRef.innerText = remainingTurns;
 
-            dataIndex = input.getAttribute('data-');
+            dataIndex = input.getAttribute('data-card');
             let dataIndexArray = new Array(dataIndex);
 
             compareClickToWolfLocation(dataIndexArray, index);
@@ -77,7 +77,7 @@ function addWolfImage(index){
     //retrieving the input cards
     for (let card of inputs) {
 
-        cardIndex = card.getAttribute('data-');
+        cardIndex = card.getAttribute('data-card');
         let cardIndexArray = cardIndex;
 
         if (cardIndexArray == index) {
