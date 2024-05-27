@@ -7,7 +7,8 @@ const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-
+let remainingTurns
+let index
 //Change modal text
 const headerTwo = document.getElementById("headerTwo");
 const paragraph = document.getElementById("paragraph");
@@ -23,9 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 }
 )
-
-let remainingTurns
-let index
 
 //Run game
 function runGame() {
@@ -53,7 +51,8 @@ function runGame() {
     }
 }
 
-function handleInput(e) {
+//handleInput
+function handleInput() {
 
     console.log('REMAINING TURNS before: ', remainingTurns)
 
@@ -153,22 +152,10 @@ function openModal(answerCorrect) {
     }
     modal.classList.remove("hidden");
     // restartGame();
-    startButton.addEventListener("click", restartGame)
+    startButton.addEventListener("click", runGame)
+
     // Remove eventListeners to prevent more being added on top of each other
     for (let input of inputs) {
         input.removeEventListener("click", handleInput)
     }
-}
-
-function restartGame() {
-
-    // set remainingTurns back to 6
-    // New random number
-    // Picture back to civilian
-    // Delay time to show modal
-    runGame();
-
-
-    console.log('MAXTURNS 152: ', maxTurns)
-
 }
