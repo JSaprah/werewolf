@@ -35,6 +35,7 @@ function runGame() {
 
     console.log('MAXTURNS: ', maxTurns)
     remainingTurns = 6;
+    turnCounterRef.innerText = remainingTurns;
     console.log('REMAINING TURNS: ', remainingTurns)
 
     for (let input of inputs) {
@@ -54,10 +55,9 @@ function handleInput(e) {
     console.log('REMAINING TURNS before: ', remainingTurns)
 
     remainingTurns = minusTurn(remainingTurns);
+    turnCounterRef.innerText = remainingTurns;
 
     console.log('REMAINING TURNS after: ', remainingTurns)
-
-    turnCounterRef.innerText = remainingTurns;
 
     //Array for the cards
     dataIndex = input.getAttribute('data-card');
@@ -75,9 +75,8 @@ function minusTurn(remainingTurns) {
     } else {
 
         openModal(false);
-
-        return remainingTurns;
     }
+    return 0;
 }
 
 /**Generate a random number and return the index. This is equal to the correct answer*/
