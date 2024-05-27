@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 let remainingTurns
 let index
 
-
 //Run game
 function runGame() {
     console.log("***********RUNNING GAME****************");
@@ -39,18 +38,22 @@ function runGame() {
     console.log('REMAINING TURNS: ', remainingTurns)
 
     for (let input of inputs) {
-        console.log('REMAINING TURNS before: ', remainingTurns)
 
-        // Separate functionality for handling inputs to allow add/remove listeners
-        // Prevents doubling/tripling up on eventlisteners on inputs
+            input.addEventListener('click', function() {
+            dataIndex = input.getAttribute('data-card');
+            let dataIndexArray = new Array(dataIndex);
+
+            compareClickToWolfLocation(dataIndexArray, index);
+            }
+            )
+
+            console.log('REMAINING TURNS before: ', remainingTurns)
+
         input.addEventListener("click", handleInput)
     }
 }
 
 function handleInput(e) {
-    // Get the grandparent of the card being clicked
-    let inputParent = e.target.parentNode
-    let input = inputParent.parentNode
 
     console.log('REMAINING TURNS before: ', remainingTurns)
 
@@ -58,14 +61,7 @@ function handleInput(e) {
     turnCounterRef.innerText = remainingTurns;
 
     console.log('REMAINING TURNS after: ', remainingTurns)
-
-    //Array for the cards
-    dataIndex = input.getAttribute('data-card');
-    let dataIndexArray = new Array(dataIndex);
-
-    compareClickToWolfLocation(dataIndexArray, index);
 }
-
 
 /**Decrease the count of the turns left with each user click. */
 function minusTurn(remainingTurns) {
