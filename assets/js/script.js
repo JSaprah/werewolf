@@ -24,39 +24,60 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 )
 
+let remainingTurns
+let index
+
+
 //Run game
 function runGame() {
+    console.log("***********RUNNING GAME****************");
+    index = generateRandomNumber();
 
-    let index = generateRandomNumber();
-    let remainingTurns = maxTurns;
+    console.log('MAXTURNS: ', maxTurns)
+    remainingTurns = 6;
+    console.log('REMAINING TURNS: ', remainingTurns)
 
     for (let input of inputs) {
+        console.log('REMAINING TURNS before: ', remainingTurns)
 
-        input.addEventListener("click", function () {
-
-            remainingTurns = minusTurn(remainingTurns);
-            turnCounterRef.innerText = remainingTurns;
-
-            dataIndex = input.getAttribute('data-card');
-            let dataIndexArray = new Array(dataIndex);
-
-            compareClickToWolfLocation(dataIndexArray, index);
-        })
+        // Separate functionality for handling inputs to allow add/remove listeners
+        // Prevents doubling/tripling up on eventlisteners on inputs
+        input.addEventListener("click", handleInput)
     }
 }
 
+function handleInput(e) {
+    // Get the grandparent of the card being clicked
+    let inputParent = e.target.parentNode
+    let input = inputParent.parentNode
+
+    console.log('REMAINING TURNS before: ', remainingTurns)
+
+    remainingTurns = minusTurn(remainingTurns);
+    
+    console.log('REMAINING TURNS after: ', remainingTurns)
+
+    turnCounterRef.innerText = remainingTurns;
+
+    //Array for the cards
+    dataIndex = input.getAttribute('data-card');
+    let dataIndexArray = new Array(dataIndex);
+
+    compareClickToWolfLocation(dataIndexArray, index);
+}
+
+
 /**Decrease the count of the turns left with each user click. */
-function minusTurn(turnsCount) {
+function minusTurn(remainingTurns) {
 
-    if (turnsCount > 1) {
-        return turnsCount - 1;
-    } else {
+ if (remainingTurns > 1) {
+     return remainingTurns - 1;
+} else {
 
-        openModal(false);
+     openModal(false);
 
-        return 0;
+     return remainingTurns;
     }
-
 }
 
 /**Generate a random number and return the index. This is equal to the correct answer*/
@@ -125,18 +146,20 @@ function openModal(answerCorrect) {
         paragraph.innerHTML = `Congratulations!`;
         startButton.innerHTML = `Play again`;
 
-        restartGame();
-
     } else {
 
         headerTwo.innerHTML = `You Lose!`;
         paragraph.innerHTML = `Try again`;
         startButton.innerHTML = `Play again`;
 
-        restartGame();
-
     }
     modal.classList.remove("hidden");
+    // restartGame();
+    startButton.addEventListener("click", restartGame)
+    // Remove eventListeners to prevent more being added on top of each other
+    for (let input of inputs) {
+        input.removeEventListener("click", handleInput)
+    }
 }
 
 function restartGame() {
@@ -145,5 +168,9 @@ function restartGame() {
 // New random number
 // Picture back to civilian
 // Delay time to show modal
+    runGame();
+
+
+    console.log('MAXTURNS 152: ', maxTurns)
 
 }
