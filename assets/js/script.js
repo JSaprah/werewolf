@@ -54,7 +54,7 @@ function handleInput(e) {
     console.log('REMAINING TURNS before: ', remainingTurns)
 
     remainingTurns = minusTurn(remainingTurns);
-    
+
     console.log('REMAINING TURNS after: ', remainingTurns)
 
     turnCounterRef.innerText = remainingTurns;
@@ -70,13 +70,13 @@ function handleInput(e) {
 /**Decrease the count of the turns left with each user click. */
 function minusTurn(remainingTurns) {
 
- if (remainingTurns > 1) {
-     return remainingTurns - 1;
-} else {
+    if (remainingTurns > 1) {
+        return remainingTurns - 1;
+    } else {
 
-     openModal(false);
+        openModal(false);
 
-     return remainingTurns;
+        return remainingTurns;
     }
 }
 
@@ -93,7 +93,7 @@ function generateRandomNumber() {
 }
 
 /**Add the wolf image in the correct index number*/
-function addWolfImage(index){
+function addWolfImage(index) {
 
     //retrieving the input cards
     for (let card of inputs) {
@@ -111,6 +111,9 @@ function addWolfImage(index){
             console.log("Front face input: ", frontFaceInput);
             console.log("Back face input: ", backFaceInput);
 
+        } else {
+            let backFaceInput = card.querySelector('.back-face input[type="image"]');
+            backFaceInput.src = "assets/images/civilian-front.png";
         }
 
         console.log("this is card index= ", cardIndexArray);
@@ -129,7 +132,7 @@ function compareClickToWolfLocation(dataIndexArray, index) {
 
         console.log("Yayy")
         openModal(true);
-}
+    }
 }
 
 /**Hide the modal */
@@ -164,10 +167,10 @@ function openModal(answerCorrect) {
 
 function restartGame() {
 
-// set remainingTurns back to 6
-// New random number
-// Picture back to civilian
-// Delay time to show modal
+    // set remainingTurns back to 6
+    // New random number
+    // Picture back to civilian
+    // Delay time to show modal
     runGame();
 
 
