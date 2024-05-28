@@ -8,9 +8,9 @@
     box-sizing: border-box;
 }
 
+/*General designing rules for lay-out*/
 body {
     background-color: rgba(16, 1, 16, 0.941);
-   /* background-color: rgba(43, 2, 42, 0.941); */
 }
 
 h1 {
@@ -27,10 +27,9 @@ h1 {
 .gaming-container {
     background-color: #e5daec;
     box-sizing: border-box;
-    width: 85%;
+    width: 80%;
     height: 100%;
     margin: auto;
-    margin-bottom: 100px;
 }
 
 #score-canvas {
@@ -48,8 +47,8 @@ h1 {
     align-items: center;
 }
 
-/** Flipping **/
-
+/** Flipping cards**/
+/** outer div**/
 .inner-flip {
     width: 100px;
     height: 100px;
@@ -59,11 +58,12 @@ h1 {
     margin-top: 20px;
 }
 
-.controls-canvas .inner-flip:active {
+.inner-flip:active {
     transform: rotateY(180deg);
     transition: transform .01s;
 }
 
+/** Image div back and front**/
 .front-face,
 .back-face {
     position: absolute;
@@ -72,15 +72,18 @@ h1 {
     backface-visibility: hidden;
 }
 
+/** Image div back**/
 .back-face {
     transform: rotateY(180deg);
 }
 
+/** Input**/
 .btn {
     height: 100px;
     width: 100px;
 }
 
+/** Information modal**/
 #information-modal {
     background-color: rgba(24, 2, 24, 0.941);
     color: white;
