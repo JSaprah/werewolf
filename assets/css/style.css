@@ -38,7 +38,7 @@ h1 {
     text-align: center;
     padding-top: 20px;
     font-family: "lora", sans-serif;
-    
+
 }
 
 .controls-canvas {
@@ -69,6 +69,9 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
@@ -91,13 +94,19 @@ h1 {
     height: 100%;
     z-index: 2;
     border-radius: 10px;
-    text-align: center;
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    align-items: center;
+}
+
+.description-intro {
+    text-align: center;
     padding: 200px;
-    margin-top: 50px;
+    width: 100%;
+    height: 100%;
 }
 
 #start-mission {
@@ -119,28 +128,34 @@ h1 {
 
 @media screen and (max-width: 767px) {
 
-.controls-canvas {
-    display: grid;
-    grid-template-columns: repeat(4, 2fr);
-}
+    .controls-canvas {
+        display: grid;
+        grid-template-columns: repeat(4, 2fr);
+    }
 }
 
 /*Media queries*/
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 603px) {
 
     .controls-canvas {
         display: grid;
         grid-template-columns: repeat(3, 2fr);
     }
-    }
 
-    /*Media queries*/
+    .description-intro {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+/*Media queries*/
 
 @media screen and (max-width: 440px) {
 
     .controls-canvas {
         display: grid;
         grid-template-columns: repeat(2, 2fr);
+
     }
-    }
+}
