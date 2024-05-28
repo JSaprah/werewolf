@@ -51,7 +51,7 @@ function runGame() {
     }
 }
 
-//handleInput
+//handleInput for the remaining turns
 function handleInput() {
 
     console.log('REMAINING TURNS before: ', remainingTurns)

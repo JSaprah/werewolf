@@ -25,9 +25,19 @@ For this project I have chosen for the simplified version, because of the fact t
 ![Wireframe](docs/screenshots/structure-werewolf.PNG)
 
 
-## **Structure and style with html and css**
+## **Structure and style with HTML and CSS**
 
-The html and the css part in this project are kept as simple, but functional as possible. 
+The HTML and the css part in this project are kept as simple, but functional as possible. 
+The HTML part contains: 
+* Main class gaming container with div gaming canvas containing:
+    * Score canvas: for the remaining turns
+    * Controls canvas: container for all cards containing the front and the back of the image.
+* Section modal for information text on load of the screen and for game over, play again.
+
+The CSS file contains
+* First part contains the general designing rules for lay-out, colours, fonts etc.
+* Second part covers the flipping of the cards
+* The part part is the styling of the modal
 
 ## **JavaScript structure**
 
@@ -45,17 +55,23 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 * runGame()
     * Loops through all the cards - div inputs.
         * Add event listener upon click of the cards.
-        * Retrieves the maximum turns and runs the function minusTurn with the remainingTurns as a parameter.
         * Gets the data-index value of the cards and puts that in an array
         * Runs the function compareClickToWolfLocation() with two parameters - data-index and correctAnswer
+
+* handleInput()
+    * Retrieves the maximum turns and runs the function minusTurn with the remainingTurns as a parameter.
+    * Seperated this function from the runGame functionality so that the refresh goes well
 
 * GenerateRandomNumber()
     * Generate a random number
     * Assigns the wolf to index 1
     * Returns the index of the wolf
+    * Calls for the function addWolfImage
 
-* addWolfImage ()
+* addWolfImage (index)
+    * Gets the index value from GenerateRandomNumber
     * Add wolf image to index 1
+    * Added else statement so that it reverts all images that dont match the index number back to a civilian
 
 * minusTurn(turnsCount)
     * Gets the turnsCount as a parameter of the function
@@ -75,6 +91,9 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
     
 * openModal()
     * Opens the modal in case if the turns are over or the wolf card is found
+    * Change the text based on user guesses the right answer or remaining turns are over.
+    * Remove eventListeners to prevent more being added on top of each other
+    * Event listener for the play again button so that the user has the option the play again. This runs the runGame functionality.
 
 ## **Issues faced during the project**
 
@@ -86,3 +105,5 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 |Random number did not give me back unique values|Using set solved my issue|
 |Cards did not have a unique value because of this I was not able to compare |Added data-index so that the cards can have a unique value|
 |I needed to pass two paramaters for compareClickToWolfLocation. The parameters were coming from different functions, because of this reason I was not able to pass it.|I had functions calling other functions which became really messy. I had to reorganise the structure and put more code in the runGame function. From there I was able to pass two paramaters to compareClickToWolfLocation function.|
+|Remaining turns not updating| Added the handleInput functionality as the previous game count still was taken. Removed the event listener to prevent this from happening|
+|Play again generated a new random number, but the image was still of a wolf|Changed back the images by adding an else statement to addWolfImage() function so that it sets back all the images which are not equal to the index number back to a civilian.|

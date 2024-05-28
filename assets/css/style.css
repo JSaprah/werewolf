@@ -45,6 +45,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(5, 2fr);
     align-items: center;
+
 }
 
 /** Flipping cards**/
@@ -73,6 +74,12 @@ h1 {
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-perspective: 0;
+    perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    transform: rotate3d();
+    -webkit-transform: translate3d(0,0,0);
+    visibility:visible;
 }
 
 /** Image div back**/
