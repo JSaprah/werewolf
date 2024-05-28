@@ -52,7 +52,17 @@ function runGame() {
 }
 
 //handleInput for the remaining turns
-function handleInput() {
+function handleInput(event) {
+
+    const input = event.currentTarget;
+    const dataIndex = input.getAttribute('data-card');
+
+    input.classList.add('is-flipped');
+
+    setTimeout(() => {
+        input.classList.remove('is-flipped');
+      }, 500);
+
 
     console.log('REMAINING TURNS before: ', remainingTurns)
 
