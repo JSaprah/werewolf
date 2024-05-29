@@ -10,7 +10,7 @@
 
 /*General designing rules for lay-out*/
 body {
-    background-color: rgba(16, 1, 16, 0.941);
+    background-color: rgba(39, 2, 39, 0.941);
 }
 
 h1 {
@@ -38,14 +38,12 @@ h1 {
     text-align: center;
     padding-top: 20px;
     font-family: "lora", sans-serif;
-
 }
 
 .controls-canvas {
     display: grid;
     grid-template-columns: repeat(5, 2fr);
     align-items: center;
-
 }
 
 /** Flipping cards**/

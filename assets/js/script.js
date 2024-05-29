@@ -72,14 +72,16 @@ function handleInput(event) {
     console.log('REMAINING TURNS after: ', remainingTurns)
 }
 
-/**Decrease the count of the turns left with each user click. */
+/**Decrease the count of the turns left with each user click. If turns are over call the function openModal with a delay of 5 seconds*/
 function minusTurn(remainingTurns) {
 
     if (remainingTurns > 1) {
         return remainingTurns - 1;
     } else {
 
-        openModal(false);
+        setTimeout(() => {
+            openModal(false);
+        }, 500);
     }
     return 0;
 }
@@ -110,14 +112,14 @@ function addWolfImage(index) {
             let frontFaceInput = card.querySelector('.front-face input[type="image"]');
             let backFaceInput = card.querySelector('.back-face input[type="image"]');
 
-            backFaceInput.src = "assets/images/werewolf-front.png";
+            backFaceInput.src = "assets/images/werewolf-front.webp";
 
             console.log("Front face input: ", frontFaceInput);
             console.log("Back face input: ", backFaceInput);
 
         } else {
             let backFaceInput = card.querySelector('.back-face input[type="image"]');
-            backFaceInput.src = "assets/images/civilian-front.png";
+            backFaceInput.src = "assets/images/civilian-front.webp";
         }
 
         console.log("this is card index= ", cardIndexArray);
@@ -135,7 +137,10 @@ function compareClickToWolfLocation(dataIndexArray, index) {
     if (dataIndexArray == answerCorrect) {
 
         console.log("Yayy")
-        openModal(true);
+
+        setTimeout(() => {
+            openModal(true);
+        }, 500);
     }
 }
 
