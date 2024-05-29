@@ -1,14 +1,11 @@
 //Global variables
 const inputs = document.getElementsByClassName("inner-flip");
 const frontCard = document.getElementsByClassName("front-face");
-const backCard = document.getElementsByClassName("back-face");
-const civilian = document.getElementsByClassName("civilian-front");
-const maxTurns = parseInt(document.getElementById("turnsLeft").innerText);
 const turnCounterRef = document.getElementById("turnsLeft");
 const modal = document.getElementById("information-modal");
 const startMission = document.getElementById("start-mission");
-let remainingTurns
-let index
+let remainingTurns;
+let index;
 //Change modal text
 const headerTwo = document.getElementById("headerTwo");
 const paragraph = document.getElementById("paragraph");
@@ -23,31 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     runGame();
 }
-)
+);
 
 //Run game
 function runGame() {
-    console.log("***********RUNNING GAME****************");
+
     index = generateRandomNumber();
 
-    console.log('MAXTURNS: ', maxTurns)
     remainingTurns = 6;
     turnCounterRef.innerText = remainingTurns;
-    console.log('REMAINING TURNS: ', remainingTurns)
 
     for (let input of inputs) {
 
-            input.addEventListener('click', function() {
-            dataIndex = input.getAttribute('data-card');
+        input.addEventListener('click', function () {
+
+            let dataIndex = input.getAttribute('data-card');
             let dataIndexArray = new Array(dataIndex);
 
             compareClickToWolfLocation(dataIndexArray, index);
-            }
-            )
-
-            console.log('REMAINING TURNS before: ', remainingTurns)
-
-        input.addEventListener("click", handleInput)
+        });
+        input.addEventListener("click", handleInput);
     }
 }
 
@@ -55,35 +47,16 @@ function runGame() {
 function handleInput(event) {
 
     const input = event.currentTarget;
-    const dataIndex = input.getAttribute('data-card');
+
 
     input.classList.add('is-flipped');
 
     setTimeout(() => {
         input.classList.remove('is-flipped');
-      }, 500);
-
-
-    console.log('REMAINING TURNS before: ', remainingTurns)
+    }, 500);
 
     remainingTurns = minusTurn(remainingTurns);
     turnCounterRef.innerText = remainingTurns;
-
-    console.log('REMAINING TURNS after: ', remainingTurns)
-}
-
-/**Decrease the count of the turns left with each user click. If turns are over call the function openModal with a delay of 5 seconds*/
-function minusTurn(remainingTurns) {
-
-    if (remainingTurns > 1) {
-        return remainingTurns - 1;
-    } else {
-
-        setTimeout(() => {
-            openModal(false);
-        }, 500);
-    }
-    return 0;
 }
 
 /**Generate a random number and return the index. This is equal to the correct answer*/
@@ -104,7 +77,7 @@ function addWolfImage(index) {
     //retrieving the input cards
     for (let card of inputs) {
 
-        cardIndex = card.getAttribute('data-card');
+        let cardIndex = card.getAttribute('data-card');
         let cardIndexArray = cardIndex;
 
         if (cardIndexArray == index) {
@@ -136,12 +109,20 @@ function compareClickToWolfLocation(dataIndexArray, index) {
 
     if (dataIndexArray == answerCorrect) {
 
-        console.log("Yayy")
-
-        setTimeout(() => {
-            openModal(true);
-        }, 500);
+        openModal(true);
     }
+}
+
+/**Decrease the count of the turns left with each user click. If turns are over call the function openModal with a delay of 5 seconds*/
+function minusTurn(remainingTurns) {
+
+    if (remainingTurns > 1) {
+        return remainingTurns - 1;
+    } else {
+
+        openModal(false);
+    }
+    return 0;
 }
 
 /**Hide the modal */
@@ -166,11 +147,14 @@ function openModal(answerCorrect) {
 
     }
     modal.classList.remove("hidden");
+
     // restartGame();
-    startButton.addEventListener("click", runGame)
+    startButton.addEventListener("click", runGame);
 
     // Remove eventListeners to prevent more being added on top of each other
     for (let input of inputs) {
-        input.removeEventListener("click", handleInput)
+
+        input.removeEventListener("click", handleInput);
+
     }
 }

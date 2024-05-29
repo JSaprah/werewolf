@@ -97,7 +97,6 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 
 ## **Issues faced during the project**
 
-
 |Issue|Solution|
 |-------------|-------------|
 |Issue 28 cards were returning |I added another class on div level to avoid both front back being counted|
@@ -107,3 +106,41 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 |I needed to pass two paramaters for compareClickToWolfLocation. The parameters were coming from different functions, because of this reason I was not able to pass it.|I had functions calling other functions which became really messy. I had to reorganise the structure and put more code in the runGame function. From there I was able to pass two paramaters to compareClickToWolfLocation function.|
 |Remaining turns not updating| Added the handleInput functionality as the previous game count still was taken. Removed the event listener to prevent this from happening|
 |Play again generated a new random number, but the image was still of a wolf|Changed back the images by adding an else statement to addWolfImage() function so that it sets back all the images which are not equal to the index number back to a civilian.|
+
+## **Testing**
+
+Testing has been conducted throughtout the project and after finishing the project. Testing has been done manually, using different browsers and devices and via the tools: JSHint, W3C validators.
+
+## **Manual**
+
+Issues were found when testing in the browser Safari. It appeared that the backface-visibilty functionality was not supported. As a way-around I tried adding z-index, perspectives and the extension -webkit. Nothing helped, therefore I added the functionality "input.classList.add('is-flipped');"in JavaScript. As the cards were not flipping around I removed the class with a delay. 
+
+## **Automated testing**
+
+No errors were found for the HTML part and the CSS part of the code.
+
+## ***HTML***
+![W3C HTML](docs/screenshots/w3c-html-validator.png)
+
+## ***CSS***
+![W3C CSS](docs/screenshots/w3c-css-validator.png)
+
+
+## ***Wave***
+![Wave](docs/screenshots/wave-werewolf.PNG)
+
+## ***JavaScript***
+
+JSHint returned:
+
+* Warning: These are kept unresolved. 
+* Missing semicolons: Added these
+* Two variables not defined: These were missing the keyword let. I have added for both of them
+* Unused variables: Deleted the unused variables
+
+
+## **Resources**
+* [Jigsaw](https://jigsaw.w3.org/css-validator/validator)
+* [JSHint](https://jshint.com/)
+* [StackOverflow](https://stackoverflow.com/)
+* [Flipcards](https://www.w3schools.com/howto/howto_css_flip_card.asp)
