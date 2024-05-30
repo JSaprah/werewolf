@@ -24,6 +24,21 @@ For this project I have chosen for the simplified version, because of the fact t
 
 ![Wireframe](docs/screenshots/structure-werewolf.PNG)
 
+## **Site overview**
+
+![am I responsive](docs/screenshots/am-i-responsive.png)
+
+## ***Game***
+
+## ***Modal***
+
+The modal text has been setup in html once. In JavaScript literals are used to change the text based on if the user won or lost with the option to play again.
+
+![Information modal](docs/screenshots/introduction-modal.png)
+
+![Win modal](docs/screenshots/win-modal.png)
+
+![Lose modal](docs/screenshots/lose-modal.png)
 
 ## **Structure and style with HTML and CSS**
 
@@ -95,6 +110,10 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
     * Remove eventListeners to prevent more being added on top of each other
     * Event listener for the play again button so that the user has the option the play again. This runs the runGame functionality.
 
+## **Testing**
+
+Testing has been conducted throughtout the project and after finishing the project. Testing has been done manually, using different browsers and devices and via the tools: JSHint, W3C validators.
+
 ## **Issues faced during the project**
 
 |Issue|Solution|
@@ -107,10 +126,6 @@ Constant variables to retrieve classes and id's from html to manipulate the dom 
 |Remaining turns not updating| Added the handleInput functionality as the previous game count still was taken. Removed the event listener to prevent this from happening|
 |Play again generated a new random number, but the image was still of a wolf|Changed back the images by adding an else statement to addWolfImage() function so that it sets back all the images which are not equal to the index number back to a civilian.|
 
-## **Testing**
-
-Testing has been conducted throughtout the project and after finishing the project. Testing has been done manually, using different browsers and devices and via the tools: JSHint, W3C validators.
-
 ## **Manual**
 
 Issues were found when testing in the browser Safari. It appeared that the backface-visibilty functionality was not supported. As a way-around I tried adding z-index, perspectives and the extension -webkit. Nothing helped, therefore I added the functionality "input.classList.add('is-flipped');"in JavaScript. As the cards were not flipping around I removed the class with a delay. 
@@ -119,15 +134,26 @@ Issues were found when testing in the browser Safari. It appeared that the backf
 
 No errors were found for the HTML part and the CSS part of the code.
 
-## ***HTML***
+## ***W3C HTML***
 ![W3C HTML](docs/screenshots/w3c-html-validator.png)
 
-## ***CSS***
+## *** W3C CSS***
 ![W3C CSS](docs/screenshots/w3c-css-validator.png)
-
 
 ## ***Wave***
 ![Wave](docs/screenshots/wave-werewolf.PNG)
+
+
+## ***Lighthouse***
+Performance and percentage for SEO were improved by:
+* Adding meta-description to the HTML document
+* Converting images for png to webp
+
+The images below show the before and test before and after the changes were made. The percentages are almost for all categories 100%. 
+
+![Lightouse before desktop](docs/screenshots/lighthouse-desktop-test-before.png)
+![Lighthouse after desktop](docs/screenshots/lighthouse-desktop-test-after.png)
+![Lighthouse after mobile](docs/screenshots/lighthouse-mobile-test-after.png)
 
 ## ***JavaScript***
 
@@ -138,9 +164,31 @@ JSHint returned:
 * Two variables not defined: These were missing the keyword let. I have added for both of them
 * Unused variables: Deleted the unused variables
 
-
 ## **Resources**
-* [Jigsaw](https://jigsaw.w3.org/css-validator/validator)
-* [JSHint](https://jshint.com/)
+
+## ***Testing***
+* JSHINT: [JSHint](https://jshint.com/)
+* Wave: [Wave](https://wave.webaim.org/help)  
+* W3C: [W3C](https://validator.w3.org/)  
+* Lighthouse: via developers tools.  
+* Jigsaw W3 CSS validator: [Jigsaw](https://jigsaw.w3.org/css-validator/)  
+
+## ***Coding***
 * [StackOverflow](https://stackoverflow.com/)
 * [Flipcards](https://www.w3schools.com/howto/howto_css_flip_card.asp)
+
+
+## ***Media***
+* Fonts: [Google fonts](https://fonts.google.com/)  
+* Help with selecting the font: [Joyfont](https://fontjoy.com/)  
+* Icons: [FontAwesome](https://fontawesome.com/)  
+* Images: [Pexels](https://www.pexels.com/)  
+* Formatting images to webp: [Ezgif](https://ezgif.com/png-to-webp)  
+
+## **Unresolved bugs**
+* The modal appears too fast, because of this reason the wolf image is not fully visibile. The could be solved with the setTimeOutFunction. 
+
+## **Future enhancements** 
+
+* Adding more roles the cards to come closer to the roleplay of stelllar
+* Make it more challening with levels
