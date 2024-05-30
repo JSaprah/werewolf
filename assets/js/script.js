@@ -48,7 +48,6 @@ function handleInput(event) {
 
     const input = event.currentTarget;
 
-
     input.classList.add('is-flipped');
 
     setTimeout(() => {

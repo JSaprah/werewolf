@@ -30,6 +30,14 @@ For this project I have chosen for the simplified version, because of the fact t
 
 ## ***Game***
 
+The game consists of some cards. Upon clicking a card, the card is made visible. It's flipped around. The game can end in two situations. 
+1. The wolf is found
+2. Turns left is over
+
+In both cases the user gets an option to play again. 
+
+![Website overview](docs/screenshots/find-the-werewolf-card-overview.png)
+
 ## ***Modal***
 
 The modal text has been setup in html once. In JavaScript literals are used to change the text based on if the user won or lost with the option to play again.
@@ -141,7 +149,7 @@ No errors were found for the HTML part and the CSS part of the code.
 ![W3C CSS](docs/screenshots/w3c-css-validator.png)
 
 ## ***Wave***
-![Wave](docs/screenshots/wave-werewolf.PNG)
+![Wave](docs/screenshots/wave-werewolf.png)
 
 
 ## ***Lighthouse***
@@ -151,9 +159,9 @@ Performance and percentage for SEO were improved by:
 
 The images below show the before and test before and after the changes were made. The percentages are almost for all categories 100%. 
 
-![Lightouse before desktop](docs/screenshots/lighthouse-desktop-test-before.png)
-![Lighthouse after desktop](docs/screenshots/lighthouse-desktop-test-after.png)
-![Lighthouse after mobile](docs/screenshots/lighthouse-mobile-test-after.png)
+![Lightouse before desktop](docs/screenshots/lighthouse-desktop-test-before.png)  
+![Lighthouse after desktop](docs/screenshots/lighthouse-desktop-test-after.png)  
+![Lighthouse after mobile](docs/screenshots/lighthouse-mobile-test-after.png)  
 
 ## ***JavaScript***
 
@@ -163,6 +171,9 @@ JSHint returned:
 * Missing semicolons: Added these
 * Two variables not defined: These were missing the keyword let. I have added for both of them
 * Unused variables: Deleted the unused variables
+
+![JavsScript testing results](docs/screenshots/jshint-testing.png)  
+![JavsScript testing results](docs/screenshots/jshint-testing-2.png)  
 
 ## **Resources**
 
