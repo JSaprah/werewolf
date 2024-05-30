@@ -64,7 +64,6 @@ function generateRandomNumber() {
     let getCards = frontCard.length;
 
     let index = Math.floor(Math.random() * getCards);
-    console.log("random nr=", index);
     addWolfImage(index);
 
     return index;
@@ -86,15 +85,10 @@ function addWolfImage(index) {
 
             backFaceInput.src = "assets/images/werewolf-front.webp";
 
-            console.log("Front face input: ", frontFaceInput);
-            console.log("Back face input: ", backFaceInput);
-
         } else {
             let backFaceInput = card.querySelector('.back-face input[type="image"]');
             backFaceInput.src = "assets/images/civilian-front.webp";
         }
-
-        console.log("this is card index= ", cardIndexArray);
 
     }
 }
@@ -102,9 +96,7 @@ function addWolfImage(index) {
 /**Compare the correct answer with the clicked answer */
 function compareClickToWolfLocation(dataIndexArray, index) {
 
-    console.log(dataIndexArray);
     let answerCorrect = index;
-    console.log(answerCorrect);
 
     if (dataIndexArray == answerCorrect) {
 
@@ -147,7 +139,7 @@ function openModal(answerCorrect) {
     }
     modal.classList.remove("hidden");
 
-    // restartGame();
+    // restartGame
     startButton.addEventListener("click", runGame);
 
     // Remove eventListeners to prevent more being added on top of each other

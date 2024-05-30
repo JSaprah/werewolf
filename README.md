@@ -4,13 +4,11 @@
 
 This project is inspired by the Werewolf by Stellar Factory. This game was introduced to me on the work floor few months ago. This is a roleplay game and can be played with more or less roles. The main roles (and the basic version) is of the werewolf and the civilians. At night time the werewolf wakes up and kills one civilian. At day time the civilians can mutually guess who they think the werewolf is. If they find the werewolf the civilians win. If not, the werewolf wins. 
 
-For this project I have chosen for the simplified version, because of the fact that this is a roleplay game and it should actually be played together in a room. Next to that I am fulfilling this project based on the given requirements and the time constraints.
-
+For this project I have chosen for the simplified version, because of the fact that this is a roleplay game and it should actually be played together in a room. Next to that I am fulfilling this project based on the given requirements and the time constraints.  
 
 ## **Process**
 
-![Process](docs/screenshots/process-werewolf.png)
-
+![Process](docs/screenshots/process-werewolf.png)  
 
 ## **Requirements**
 
@@ -133,10 +131,13 @@ Testing has been conducted throughtout the project and after finishing the proje
 |I needed to pass two paramaters for compareClickToWolfLocation. The parameters were coming from different functions, because of this reason I was not able to pass it.|I had functions calling other functions which became really messy. I had to reorganise the structure and put more code in the runGame function. From there I was able to pass two paramaters to compareClickToWolfLocation function.|
 |Remaining turns not updating| Added the handleInput functionality as the previous game count still was taken. Removed the event listener to prevent this from happening|
 |Play again generated a new random number, but the image was still of a wolf|Changed back the images by adding an else statement to addWolfImage() function so that it sets back all the images which are not equal to the index number back to a civilian.|
+|After restarting the game it set the counter back to the maximum and did minus 1. Because of this the counter got stuck at 5|Seperated the counter in handleInput and removed the clicks as a first step.|
 
 ## **Manual**
 
 Issues were found when testing in the browser Safari. It appeared that the backface-visibilty functionality was not supported. As a way-around I tried adding z-index, perspectives and the extension -webkit. Nothing helped, therefore I added the functionality "input.classList.add('is-flipped');"in JavaScript. As the cards were not flipping around I removed the class with a delay. 
+
+Another issue was found with the the clicks. On desktop it was recognizing the clicks as the div inner flip was targeted. On a smaller device it returned null values as there was a child of the div element used. Changing it all to inner flip helped that always the parent is clicked on and so the children are targetted.
 
 ## **Automated testing**
 
@@ -177,6 +178,8 @@ JSHint returned:
 
 ## **Resources**
 
+Resources for testing, coding and media were used to complete this project.
+
 ## ***Testing***
 * JSHINT: [JSHint](https://jshint.com/)
 * Wave: [Wave](https://wave.webaim.org/help)  
@@ -196,8 +199,9 @@ JSHint returned:
 * Images: [Pexels](https://www.pexels.com/)  
 * Formatting images to webp: [Ezgif](https://ezgif.com/png-to-webp)  
 
-## **Unresolved bugs**
+## **Unresolved bugs and learning points**
 * The modal appears too fast, because of this reason the wolf image is not fully visibile. The could be solved with the setTimeOutFunction. 
+* Next time I would put all event listeners at the top of the page to make the code readability better and to avoid more from being added on top. As a way around I have currently used the remove event listener.
 
 ## **Future enhancements** 
 
