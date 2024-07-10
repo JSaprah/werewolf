@@ -176,6 +176,20 @@ JSHint returned:
 ![JavsScript testing results](docs/screenshots/jshint-testing.png)  
 ![JavsScript testing results](docs/screenshots/jshint-testing-2.png)  
 
+## **Deployment**
+
+The deployment has been done via GitHub pages by following the steps below:
+
+1. Open the repository of the project [repository](https://github.com/JSaprah/werewolf)
+2. Click on settings
+3. From the menu on the left, select the tab pages
+4. Select the main branch from the source section and set the folder to /(root)
+5. Click save
+6. A message will appear that the deployment is successful with the URL to the production site
+
+The live site can be found via the URL [Werewolf live site](https://jsaprah.github.io/werewolf/)
+
+
 ## **Resources**
 
 Resources for testing, coding and media were used to complete this project.
